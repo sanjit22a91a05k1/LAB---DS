@@ -1,0 +1,81 @@
+// stack using array
+#include<stdio.h>
+int stack[200],top=-1, n;
+void push()
+{
+	int val;
+	scanf("%d",&val);
+  if(top==n-1)
+  {
+  	printf("The stack is over flow\n");
+  }
+  else 
+  {
+  	 stack[++top]=val;
+  }
+}
+int pop()
+{
+	if(top==-1)
+	{
+		return -1;
+	}
+	else 
+	{
+		int item=stack[top];
+		top--;
+		return item;
+	}
+}
+void display()
+{
+	if(top==-1)
+	{
+		printf("The stack is empty\n");
+	}
+	else
+	{
+	for(int i=top; i>=0; i--)
+	{
+		printf("%d \n",stack[i]);
+	}
+}
+}
+int main()
+{
+	int ch;
+	scanf("%d",&n);
+	while(1)
+	{
+		printf("1.push 2. pop 3. display 4. exist\n");
+		scanf("%d",&ch);
+		if(ch==1)
+		{
+			//push
+			
+			push( );
+		}
+		else if(ch==2)
+		{
+			//pop
+		   int item=pop();
+			if(item==-1)
+			{
+				printf("The stack is empty\n");
+			}
+			else
+			{
+				printf("%d\n",item);
+			}
+		}
+		else if(ch==3)
+		{
+			// display
+			display();
+		}
+		else
+		{
+			break;
+		}
+	}
+}
