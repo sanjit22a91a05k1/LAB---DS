@@ -1,0 +1,59 @@
+//quick sorts
+#include<stdio.h>
+int quick(int *a, int l, int h)
+{
+	int start=l;
+	int end=h;
+	int pivot=a[start];
+	while(start<end)
+	{
+		while(pivot>=a[start])
+		{
+			start++;
+		}
+		while(pivot<a[end])
+		{
+			end--;
+		}
+		if(start<end)
+		{
+		int temp=a[start];
+		a[start]=a[end];
+		a[end]=temp;
+	}
+	}
+	int temp=a[l];
+	a[l]=a[end];
+	a[end]=temp;
+	return end;
+}
+int quicksort(int *a, int l, int h)
+{
+	if(l>h){
+		return 0; 
+	}
+	int pa=quick(a,l,h);
+	quicksort(a,l,pa-1);
+	quicksort(a,pa+1,h);
+}
+ void printquick(int *a, int n)
+{
+for(int i=0; i<n; i++)
+{
+	printf("%d ",a[i]);
+}
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	int a[n];
+	for(int i=0; i<n; i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	int l=0;
+	int h=n-1;
+	quicksort(a,l,h);
+	printquick(a,n);
+}
