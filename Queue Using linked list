@@ -1,0 +1,92 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+typedef struct node NODE;
+NODE * head=NULL;
+NODE *NN;
+NODE *temp;
+ void insert_at_end()
+ {
+ 	temp=head;
+ 	int val;
+	scanf("%d",&val);
+	NN=(NODE *)malloc(sizeof(NODE));
+	NN->data=val;
+	NN->next=NULL;
+	if(head==NULL)
+	{
+		head=NN;
+	}
+	else
+	{
+	while(temp->next!=NULL)
+	{
+		temp=temp->next;
+	}
+	temp->next=NN;
+ }
+}
+void delete_at_head()
+{
+	temp=head;
+	if(head==NULL)
+	{
+		printf("The Node is empty\n");
+	}
+	else
+	{
+		printf("%d\n",temp->data);
+		head=temp->next;
+		free(temp);
+	}
+}
+ void display()
+ {
+ 	temp=head;
+ 	if(head==NULL)
+ 	{
+ 		printf("The linked list is empty\n");
+	 }
+	 else
+	 {
+	 	while(temp!=NULL)
+	 	{
+	 		printf("%d\n",temp->data);
+	 		temp=temp->next;
+		 }
+	 }
+ }
+
+int main()
+{
+	int ch;
+	while(1)
+	{
+		printf("1. insert_at_end 2.delete_at_head  3. display 4.exits");
+		scanf("%d",&ch);
+		if(ch==1)
+		{
+			//  insert_at_end
+		   insert_at_end();
+			
+		}
+		else if(ch==2)
+		{
+			// delete_at_head
+			delete_at_head();
+		}
+		else if (ch==3)
+		{
+			display();
+		}
+		else
+		{
+			break;
+		}
+		
+		
+	}
+}
