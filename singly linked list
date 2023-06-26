@@ -1,0 +1,139 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+};
+typedef struct node NODE;
+NODE * head=NULL;
+NODE *NN;
+NODE *temp;
+void insert_at_head()
+{
+	int val;
+	scanf("%d",&val);
+	NN=(NODE *)malloc(sizeof(NODE));
+	NN->data=val;
+	NN->next=NULL;
+	if(head==NULL)
+	{
+		head=NN;
+	}
+	else
+	{
+		NN->next=head;
+		head=NN;
+	}
+}
+ void display()
+ {
+ 	temp=head;
+ 	if(head==NULL)
+ 	{
+ 		printf("The linked list is empty\n");
+	 }
+	 else
+	 {
+	 	while(temp!=NULL)
+	 	{
+	 		printf("%d\n",temp->data);
+	 		temp=temp->next;
+		 }
+	 }
+ }
+ void insert_at_end()
+ {
+ 	temp=head;
+ 	int val;
+	scanf("%d",&val);
+	NN=(NODE *)malloc(sizeof(NODE));
+	NN->data=val;
+	NN->next=NULL;
+	if(head==NULL)
+	{
+		head=NN;
+	}
+	else
+	{
+	while(temp->next!=NULL)
+	{
+		temp=temp->next;
+	}
+	temp->next=NN;
+ }
+}
+void delete_at_head()
+{
+	temp=head;
+	if(head==NULL)
+	{
+		printf("The Node is empty\n");
+	}
+	else
+	{
+		printf("%d\n",temp->data);
+		head=temp->next;
+		free(temp);
+	}
+}
+void  delete_at_end()
+{
+	NODE *prev;
+	temp=head;
+	if(head==NULL)
+	{
+		printf("The Node is empty\n");
+	}	
+	else
+	{
+		while(temp->next!=NULL)
+		{
+			prev=temp;
+			temp=temp->next;
+		}
+		printf("%d\n",temp->data);
+		prev->next=NULL;
+		free(temp);
+		
+	}
+}
+int main()
+{
+	int ch;
+	while(1)
+	{
+		printf("1. insert_at_head 2. insert_at_end 3.delete_at_head 4. delete_at_end 5. display 6.exits");
+		scanf("%d",&ch);
+		if(ch==1)
+		{
+			//insert_at_head
+			insert_at_head();
+			
+		}
+		else if(ch==2)
+		{
+		   //  insert_at_end
+		   insert_at_end();
+		}
+		else if(ch==3)
+		{
+			// delete_at_head
+			delete_at_head();
+		}
+		else if(ch==4)
+		{
+			//delete_at_end
+			 delete_at_end();
+		}
+		else if (ch==5)
+		{
+			display();
+		}
+		else
+		{
+			break;
+		}
+		
+		
+	}
+}
