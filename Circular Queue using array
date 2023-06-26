@@ -1,0 +1,102 @@
+// circular queue using linked list
+#include<stdio.h>
+int n,queue[100] ,front=-1, rear=-1;
+void enque()
+{
+	int val;
+	scanf("%d",&val);
+	if((rear+1)%n==front)
+	{
+		printf("Queue is Full\n");
+	}
+	else if(front==-1 && rear==-1)
+	{
+		front=rear=0;
+		queue[rear]=val;
+	}
+	else 
+	{
+		rear=(rear+1)%n;
+		queue[rear]=val;
+	}
+}
+void deque()
+{
+	if(front==-1 && rear==-1)
+	{
+		printf("The circular queue is empty\n");
+	}
+	else if(front==rear)
+	{
+		front=-1;
+		rear=-1;
+	}
+	else 
+	{
+		printf("%d\n",queue[front]);
+		front=(front+1)%n;
+	}
+}
+void display()
+{
+	if(front==-1 && rear==-1)
+	{
+		printf("The circular queue is empty\n");
+	}
+	else
+	{
+		while(front!=rear)
+		{
+			printf("%d\n",queue[front]);
+			front=(front+1)%n;
+		}
+		printf("%d\n",queue[rear]); // we can print front also bcz both of them are in same position
+	}
+}
+void peek()
+{
+	if(front==-1 && rear==-1)
+	{
+		printf("The queue is empty\n");
+	}
+	else 
+	{
+		printf("%d\n",queue[rear]);
+	}
+}
+
+int main()
+{
+	int ch;
+	scanf("%d",&n);
+	while(1)
+	{
+		printf("1.enque 2.deque 3.display 4.peek 5.exits");
+		scanf("%d",&ch);
+		if(ch==1)
+		{
+			//enque
+			enque();
+		}
+		else if(ch==2)
+		{
+			//deque
+			deque();
+		}
+		else if(ch==3)
+		{
+			//display
+			display();
+		}
+		else if(ch==4)
+		{
+			//peek;
+			peek();
+		}
+		else 
+		{
+		   break;
+		}
+	}
+	
+}
