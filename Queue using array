@@ -1,0 +1,91 @@
+#include<stdio.h>
+int front=-1, rear=-1,n,queue[100];
+void enqueue(val)
+{
+	if(rear==n-1)
+	{
+		printf("The Queue is full\n");
+	}
+	else if(rear==-1 && front==-1)
+	{
+		rear=0;
+		front=0;
+		queue[rear]=val;	
+	}
+	else
+	{
+		rear++;
+		queue[rear]=val;
+	}
+}
+int dequeue()
+{
+	if(front==-1 && rear==-1)
+	{
+		return -1;
+	}
+	else if(front == rear)
+	{
+		front =-1;
+		rear=-1;
+	}
+	else
+	{
+		return queue[front];
+		front++;
+	}
+}
+int display()
+{
+	if(front==-1 && rear==-1)
+	{
+		printf("The queue is empty\n");
+	}
+	else
+	{
+		for(int i=front; i<=rear; i++)
+		{
+			printf("%d\n",queue[i]);
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int ch;
+	scanf("%d",&n);
+	while(1)
+	{
+		printf("1.enqueue 2.dequeue 3. display 4.exist\n");
+		scanf("%d",&ch);
+		if(ch==1)
+		{
+			// enqueue
+			int val;
+			scanf("%d",&val);
+			enqueue(val);
+		}
+		else if(ch==2)
+		{
+			// dequeue
+		int	x=dequeue();
+			if(x==-1)
+			{
+				printf("The queue is full\n");
+			}
+			else
+			{
+				printf("%d\n",x);
+			}
+		}
+		else if(ch==3)
+		{
+			// display
+			display();
+		}
+		else
+		{
+			break;
+		}
+	}
+}
