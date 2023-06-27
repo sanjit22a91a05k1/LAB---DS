@@ -1,4 +1,4 @@
-// non-recursive binary search 
+// recursive binary search 
 #include<stdio.h>
 //int binary(int *a, int n, int x, int l,int h )
 //{
